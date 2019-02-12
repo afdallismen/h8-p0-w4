@@ -1,22 +1,31 @@
 function cariModus(arr) {
-    var sorted = arr.slice().sort()
-    var moreThanHalf = false
-    var unique
-    var count = 0
-    var i = 0
-    while (!moreThanHalf) {
-        if (sorted[i] !== unique) {
-            unique = sorted[i]
-            count = 1
-        } else {
-            count++
+    var counts = []
+    for (var i = 0; i < arr.length; i++) {
+        var found = false
+        var j = 0
+        while (!found && j < counts.length) {
+            found = arr[i] === counts[j][0] 
+            j++
         }
 
-        if (count >= sorted.length()/2) {
-            moreThanHalf = true
+        if (!found) {
+            counts.push([arr[i], 1])
+        } else {
+            counts[j-1][1]++
+        }
+    }
+    if (counts.length === arr.length || counts.length <= 1) {
+        return -1
+    }
+
+    var max = counts[0]
+    for (var i = 0; i < counts.length; i++) {
+        if (counts[i][1] > max[1]) {
+            max = counts[i]
         }
     }
 
+    return max[0]
 }
 
 console.log(cariModus([10, 4, 5, 2, 4]))
