@@ -4,7 +4,7 @@ function ubahHuruf(kata) {
     for (var i=0; i<kata.length; i++) {
         var found = false
         var j = 0
-        while (!found) {
+        while (!found && j < alphabet.length) {
             found = kata[i] === alphabet[j]
             j++
         }
