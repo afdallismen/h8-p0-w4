@@ -20,19 +20,20 @@ function shoppingTime(memberId, money) {
     var iCanBuy = produk
     var listPurchased = []
     while (money >= 50000 && iCanBuy.length > 0) {
+        iCanBuy = []
         var max = 0
         var beli = undefined
         for (var i=0; i<produk.length; i++) {
             if (produk[i].harga > max && produk[i].harga <= money) {
                 max = produk[i].harga
-                beli = i 
+                beli = i
             }
         }
         if (beli !== undefined) {
             money -= produk[beli].harga
+            console.log(produk)
             listPurchased.push(produk.splice(beli, 1)[0].nama)
             for (var j=0; j<produk.length; j++) {
-                iCanBuy = []
                 if (money >= produk[j].harga) {
                     iCanBuy.push(produk[j])
                 }
