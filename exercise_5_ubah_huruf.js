@@ -8,6 +8,9 @@ function ubahHuruf(kata) {
             found = kata[i] === alphabet[j]
             j++
         }
+        if (j >= 25) {
+            j = 0
+        }
         kataBaru += alphabet[j]
     }
     return kataBaru
