@@ -9,11 +9,15 @@ function naikAngkot(arrPenumpang) {
     for (var i=0; i<arrPenumpang.length; i++) {
         var alamat = []
         for (var j=0; j<rute.length; j++) {
-            if (rute[j] === arrPenumpang[i][1] || rute[j] === arrPenumpang[i][2]) {
+            if (rute[j] === arrPenumpang[i][1]) {
                 alamat.push(j)
             }
         }
-        alamat = alamat.sort()
+        for (var j=0; j<rute.length; j++) {
+            if (rute[j] === arrPenumpang[i][2]) {
+                alamat.push(j)
+            }
+        }
         var jarak = Math.abs(alamat[0] - alamat[1])
         var cost = jarak * 2000
         bill.push({
